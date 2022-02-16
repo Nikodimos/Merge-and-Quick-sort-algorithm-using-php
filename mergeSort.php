@@ -1,5 +1,6 @@
 <?php
 require_once './executionTime.php';
+require_once './memoryUsage.php';
 ini_set('memory_limit', '-1');
 function mergesort($numlist)
 {
@@ -54,7 +55,7 @@ foreach ($files as $file)
 {
     echo $file . "\n";
 }
-echo "select the file that you want to sort ...";
+echo "select the file that you want to sort ...\n";
 $input = rtrim(fgets(STDIN));
 
 $lines = file($input, FILE_SKIP_EMPTY_LINES | FILE_IGNORE_NEW_LINES);
@@ -67,7 +68,8 @@ if ($lines)
     $time_end = microtime(true);
     $execution_time = ($time_end - $time_start);
     $execution_time = format_time($execution_time);
-    echo 'Total Execution Time: ' . $execution_time;
+    echo 'Total Execution Time: ' . $execution_time."\n";
+    print_mem();
     $myfile = fopen("MergeSorted-$input", "w") or die("Unable to open file!");
     $newline = "\n";
     $value = '';

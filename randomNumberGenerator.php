@@ -1,5 +1,6 @@
 <?php
 require_once './executionTime.php';
+require_once './memoryUsage.php';
 function randomNumber($length)
 {
     echo "Enter the file name ... \n";
@@ -18,7 +19,8 @@ function randomNumber($length)
     $time_end = microtime(true);
     $execution_time = ($time_end - $time_start);
     $execution_time = format_time($execution_time);
-    echo 'Total Execution Time: ' . $execution_time;
+    echo 'Total Execution Time: ' . $execution_time."\n";
+    print_mem();
 }
 echo "How many line of Random number do you want? \n";
 $input = rtrim(fgets(STDIN));
